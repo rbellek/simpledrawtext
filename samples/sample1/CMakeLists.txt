@@ -5,9 +5,9 @@ project(sample)
 add_executable(${PROJECT_NAME} WIN32 main.cpp ${CMAKE_SOURCE_DIR}/../../simpledrawtext.h)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 11)
-if (MSVS)
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
 set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS /SUBSYSTEM:CONSOLE)
-endif (MSVS)
+endif()
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/../../)
 
 file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/imgout)
