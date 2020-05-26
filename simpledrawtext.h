@@ -48,7 +48,7 @@ public:
 
   void addText(const std::string& text, const float r, const float g, const float b, const int duration = std::numeric_limits<int>::max())
   {
-    m_lines.push_back({ text, r, g, b, duration, false, std::chrono::high_resolution_clock::now() });
+    m_lines.push_back({ text, r, g, b, duration, false, std::chrono::steady_clock::now() });
   }
 
   void render()
@@ -68,7 +68,7 @@ public:
       {
         if (init)
         {
-          auto now = std::chrono::high_resolution_clock::now();
+          auto now = std::chrono::steady_clock::now();
           std::chrono::duration<float> fs = now - time;
           std::chrono::milliseconds d = std::chrono::duration_cast<std::chrono::milliseconds>(fs);
           duration -= (unsigned int)d.count();
@@ -78,7 +78,7 @@ public:
         else
         {
           std::get<5>(line) = true;
-          time = std::chrono::high_resolution_clock::now();
+          time = std::chrono::steady_clock::now();
         }
       }
     }
