@@ -61,7 +61,7 @@ public:
       float r, g, b;
       int duration;
       bool init;
-      std::chrono::steady_clock::time_point time;
+      std::chrono::system_clock::time_point time;
       std::tie(text, r, g, b, duration, init, time) = line;
       drawText(text, 0, m_screenHeight - (row + 1) * m_lineHeight, r, g, b);
       if (duration != std::numeric_limits<int>::max())
@@ -116,7 +116,7 @@ public:
   unsigned int m_lineHeight = 15;
 #ifndef SIMPLE_DRAW_TEXT_NO_TIMING
 private:
-  std::vector<std::tuple<std::string, float, float, float, int, bool, std::chrono::steady_clock::time_point>> m_lines;
+  std::vector<std::tuple<std::string, float, float, float, int, bool, std::chrono::system_clock::time_point>> m_lines;
 #endif
 };
 
